@@ -1,5 +1,5 @@
-class Fighter{
-    constructor(name, power=1, health=100){
+class Fighter{ //class
+    constructor(name, power=1, health=100){ // default parameters
         this.name = name;
         this.power = power;
         this.health = health;
@@ -20,19 +20,19 @@ class Fighter{
     
 }
 
-class ImprovedFighter extends Fighter{
+class ImprovedFighter extends Fighter{ // inheritance
     doubleHit(enemy, point){
-        super.hit(enemy, point * 2);
+        super.hit(enemy, point * 2); // super
     }    
 }
 
 
 
-function fight(fighter, improvedFighter, ...rest){
+function fight(fighter, improvedFighter, ...rest){ //rest operator
     
-    let counter = 0;
+    let counter = 0; // block scoping (let)
     
-    rest.some(point=>{
+    rest.some(point=>{ // arrow functions
         
         let who = counter % 2 == 0 ? fighter : improvedFighter;
         let enemy = who === fighter ? improvedFighter : fighter;
@@ -43,7 +43,7 @@ function fight(fighter, improvedFighter, ...rest){
         //console.log(`${enemy.name} health: ${enemy.health}`);
         
         if (!enemy.isAlive()){
-            console.log(`${who.name} wins! Congratulations!`);
+            console.log(`${who.name} wins! Congratulations!`); // string interpolation
             return true;
         }
         
@@ -54,5 +54,6 @@ function fight(fighter, improvedFighter, ...rest){
 var fighter1 = new Fighter("Roma", 3, 100);
 var fighter2 = new Fighter("Max", 3, 100);
 
-
 fight(fighter1, fighter2, 10, 12, 14, 21, 18, 7, 7, 8, 5, 15, 27);
+
+
