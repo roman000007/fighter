@@ -7,7 +7,9 @@ class Fighter{ //class
     
     setDamage(damage=10){
         this.health -= damage;
-        console.log(`health: ${this.health}`);
+        if(this.health > 0){
+            console.log(`health: ${this.health}`);
+        }
     }
     
     hit(enemy, point){
@@ -43,7 +45,11 @@ function fight(fighter, improvedFighter, ...rest){ //rest operator
         //console.log(`${enemy.name} health: ${enemy.health}`);
         
         if (!enemy.isAlive()){
+
+            console.log("-----");
             console.log(`${who.name} wins! Congratulations!`); // string interpolation
+            console.log(`${who.name} HP: ${who.health}`);
+            console.log(`${enemy.name} HP: ${enemy.health}`);
             return true;
         }
         
